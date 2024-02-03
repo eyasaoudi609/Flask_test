@@ -23,7 +23,7 @@ class FlaskTestCase(unittest.TestCase):
         res = self.app.get("/")
         # print(dir(res), res.status_code)
         assert res.status_code == 200
-        assert b"Challenge accepted" in res.data
+        assert b"Hello World" in res.data
 
     def test_route_foo(self):
         res = self.app.get("/foo/12345")

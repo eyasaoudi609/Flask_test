@@ -1,20 +1,17 @@
-# Build stage
-FROM python:3.9-slim-buster AS build
+ FROM python:3.9-slim-buster
+
 WORKDIR /app
 
-# Copy only the requirements file and install dependencies
-COPY requirements.txt .
+COPY requirements.txt /app/requirements.txt
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Final stage
-FROM python:3.9-slim-buster AS final
-WORKDIR /app
+RUN pip install pytest
 
-# Copy only the necessary files from the build stage
-COPY --from=build /app /app
+COPY . /app
 
-# Expose port
+
+
 EXPOSE 8000
 
-# Command to run the application
 CMD ["python", "main.py", "--port", "8000"]

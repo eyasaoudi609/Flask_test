@@ -24,7 +24,7 @@ def create_app(config=None):
     # Flask Blueprints: http://flask.pocoo.org/docs/latest/blueprints
     @app.route("/")
     def hello_world():
-        return "Hello World"
+        return "Challenge Accepted"
 
     @app.route("/foo/<someId>")
     def foo_url_arg(someId):
